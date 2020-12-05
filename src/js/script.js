@@ -1,33 +1,38 @@
-/*const UserArr = [];
 
-function addInformArr (text) {
-    UserArr.push({
-        text: text,
-        status: false
-    })
-    console.log(UserArr);
-}
-
-function pushButton (event) {
-    let elem = document.getElementById("UserTxt");
-    const text = elem.value;
-    addInformArr(text); 
-} */
 let inputBtn = document.querySelector('.input__btn'),
  inputUser =  document.querySelector('.input__user'),
- todo = document.querySelector('.maine__item');
+ toDo = document.querySelector('.conteiner');
 
 // create a function that will be add new task in the list  
-let toDoList= [];
+let toDoList = [];
 
-inputBtn.addEventListener('click', function (){
+inputBtn.addEventListener('click', function(){
 
     let newToDo = {
         todo: inputUser.value,
         checked: false,
         important: false
-    }
+    };
 
     toDoList.push(newToDo);
-    console.log(newToDo);
+
+    console.log(toDoList);
+    outRender();
 });
+
+// create a function that will be render all tasks from toDoList
+function outRender(){
+
+    let displayMassage ='';
+    toDoList.forEach(function(item, i){
+
+        displayMassage += `
+        <div class='maine__item'>
+            <input type='checkbox' id='item_${i}' ${item.checked ? 'checked': ''}>
+            <label for='item_${i}'>${item.todo}</label>
+        </div>
+        `;
+        toDo.innerHTML= displayMassage;
+    });
+} 
+
