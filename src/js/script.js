@@ -53,7 +53,7 @@ function updateStorage() {
 // create a function that will be render all tasks from toDoList
 function outRender() {
     let displayedMessage = '';
-    if (toDoList.length > 0) {
+    if (toDoList.length >= 0) {
         toDoList.forEach(function(item, i){
             displayedMessage += `
             <li class='maine__item '>
