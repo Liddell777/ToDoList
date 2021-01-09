@@ -8,7 +8,7 @@
 }
 body {
     height: 800px;
-    background: url(/src/image/jpg.0.jpeg) no-repeat;
+    background: url(/image/jpg.0.jpeg) no-repeat;
     background-size: cover;
 }
 .todo__list {
