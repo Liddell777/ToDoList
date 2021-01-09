@@ -1,2 +1,3 @@
 # ToDoList
-![Stages](./src/image/stages.jpg)
+![Stages](/image/stages.jpg)
+https://liddell777.github.io/ToDoList/
