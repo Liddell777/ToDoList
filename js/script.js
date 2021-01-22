@@ -7,8 +7,14 @@ let toDoList =[];
 
 let toDoItemEl =[];
 
-if (localStorage.getItem('todo')) {
-    toDoList = JSON.parse(localStorage.getItem('todo'));
+// create a function which takes array from localStorage and move the completed tasks down
+const filterTask = () => {
+    if (localStorage.getItem('todo')) {
+        toDoList = JSON.parse(localStorage.getItem('todo'));
+    }
+    const activeTasks = toDoList.length && toDoList.filter(item => item.checked == false);
+    const checkedTasks = toDoList.length && toDoList.filter(item => item.checked == true);
+    toDoList = [...activeTasks,...checkedTasks];
     outRender();
 }
 
@@ -17,8 +23,7 @@ plusButton.addEventListener('click', function(){
     
     let newToDo = {
         todo: taskInput.value,
-        checked: false,
-        important: false
+        checked: false
     };
 
     toDoList.push(newToDo);
@@ -35,6 +40,7 @@ const completeTask = index => {
     toDoItemEl[index].classList.remove('.checked');
     outRender();
     updateStorage();
+    filterTask (); 
 }
 
 // create a function that will be delete task 
@@ -43,7 +49,6 @@ const deleteTask = index => {
     outRender();
     updateStorage();
 }
-
 
 // create a function that will be add a localStorage 
 function updateStorage() {
@@ -70,11 +75,5 @@ function outRender() {
     }
 } 
 
-// create a function that will be filter completed task and send them down the list
-/* const filterTask = () => {
-    const activeTasks = toDoItemEl.length && toDoItemEl.filter(item => item.checked == false);
-    const checkedTasks = toDoItemEl.length && toDoItemEl.filter(item => item.checked == true);
-    toDoList = [...activeTasks,...checkedTasks];
-    console.log(activeTasks,checkedTasks);
-}
- */
+
+
